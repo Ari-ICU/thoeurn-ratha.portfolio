@@ -71,13 +71,14 @@ const ContactForm = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 animate-fade-in">
             Get in Touch
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 animate-fade-in-up mb-2">
-            Ready to start a project, ask a question, or collaborate? I'd love
-            to hear from you!
-          </p>
+
           <p className="text-lg text-gray-500 dark:text-gray-400 animate-fade-in-up mb-2">
             I strive to respond within 24 hours. You can reach out via email,
             phone, or connect through my social media channels.
+          </p>
+          <p className="text-lg text-gray-500 dark:text-gray-400 animate-fade-in-up">
+            Whether it’s a new project idea, feedback, or just a friendly hello,
+            don’t hesitate to get in touch!
           </p>
         </div>
 
