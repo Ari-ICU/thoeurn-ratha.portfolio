@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { projects } from "@/data/projects";
@@ -28,6 +28,13 @@ const fallbackSVG = (
 );
 
 const ProjectList: React.FC = () => {
+  // State to control number of projects shown
+  const [visibleCount, setVisibleCount] = useState(6); // Show 6 initially
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => prev + 6); // Load 6 more on click
+  };
+
   return (
     <>
       <Head>
@@ -56,7 +63,7 @@ const ProjectList: React.FC = () => {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {projects.map((project: ProjectProps) => (
+            {projects.slice(0, visibleCount).map((project: ProjectProps) => (
               <Link
                 key={project.id}
                 href={`/projects/${project.id}`}
@@ -99,42 +106,34 @@ const ProjectList: React.FC = () => {
               </Link>
             ))}
           </div>
+
+          {/* View More Button */}
+          {visibleCount < projects.length && (
+            <div className="text-center mt-12">
+              <button
+                onClick={handleViewMore}
+                className="inline-block px-6 py-3 text-white bg-gradient-to-r from-green-900 to-cyan-700 hover:from-cyan-700 hover:to-green-900 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                View More Projects
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Animations */}
         <style jsx>{`
           @keyframes fade-in {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
           }
           @keyframes fade-in-up {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
           }
-          .animate-fade-in {
-            animation: fade-in 0.8s ease-out forwards;
-          }
-          .animate-fade-in-up {
-            animation: fade-in-up 0.8s ease-out 0.2s forwards;
-          }
-
+          .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
+          .animate-fade-in-up { animation: fade-in-up 0.8s ease-out 0.2s forwards; }
           @media (prefers-reduced-motion: reduce) {
-            .animate-fade-in,
-            .animate-fade-in-up {
-              animation: none;
-              opacity: 1;
-              transform: translateY(0);
-            }
+            .animate-fade-in, .animate-fade-in-up { animation: none; opacity: 1; transform: translateY(0); }
           }
         `}</style>
       </section>
@@ -143,5 +142,4 @@ const ProjectList: React.FC = () => {
 };
 
 ProjectList.displayName = "ProjectList";
-
 export default ProjectList;

@@ -61,7 +61,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="relative ">
+    <section className="relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 animate-fade-in">
