@@ -5,13 +5,6 @@ import Head from "next/head";
 import { ContactProps } from "@/types";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaTelegram,
-  FaEnvelope,
-} from "react-icons/fa";
 
 // Default props
 const defaultProps = {
@@ -21,33 +14,10 @@ const defaultProps = {
     "Ready to start a conversation? Reach out through any of these channels and let's make something extraordinary together.",
   email: "thoeurn.ratha.kh@gmail.com",
   phone: "+855969551630",
-  socialLinks: [
-    { platform: "GitHub", url: "https://github.com/Ari-ICU", icon: FaGithub },
-    {
-      platform: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
-      icon: FaLinkedin,
-    },
-    {
-      platform: "Twitter",
-      url: "https://twitter.com/yourusername",
-      icon: FaTwitter,
-    },
-    {
-      platform: "Telegram",
-      url: "https://t.me/yourusername",
-      icon: FaTelegram,
-    },
-    {
-      platform: "Email",
-      url: "mailto:thoeurn.ratha.kh@gmail.com",
-      icon: FaEnvelope,
-    },
-  ],
 };
 
 const Contact = () => {
-  const { id, title, subtitle, email, phone, socialLinks } = defaultProps;
+  const { id, title, subtitle, email, phone } = defaultProps;
 
   return (
     <>
@@ -76,7 +46,6 @@ const Contact = () => {
           "@type": "Person",
           name: "Your Name",
           url: "https://yourportfolio.com",
-          sameAs: socialLinks.map((link) => link.url),
           email: `mailto:${email}`,
           telephone: phone,
           description:
