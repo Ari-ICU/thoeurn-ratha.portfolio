@@ -45,7 +45,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden text-white py-16 flex items-center"
+      className="relative py-10 sm:py-24 overflow-hidden max-h-screen text-white flex items-center"
       role="banner"
       aria-labelledby="hero-title"
     >

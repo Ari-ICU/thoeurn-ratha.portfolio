@@ -34,9 +34,6 @@ export interface ProjectProps {
   githubUrl?: string;
 }
 
-
-
-
 export interface ContactProps {
   /** Section ID for anchor linking */
   id?: string;
@@ -53,15 +50,41 @@ export interface ContactProps {
   /** Contact phone number */
   phone?: string;
 
-  /** Social media links */
-  socialLinks?: {
-    platform: string;
-    url: string;
-    icon?: string;
-  }[];
-
-
-
-  
 }
 
+// src/types/index.ts
+
+export interface Certificate {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialUrl?: string;
+}
+
+export interface Skill {
+  name: string;
+  level: number; // 0 to 100
+}
+
+export interface ExperienceItemProps {
+  title: string;
+  company: string;
+  date: string;
+  description: string[];
+}
+
+
+export interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  description?: string;
+  logo?: string;
+}
+
+export interface ResumeProps {
+  experience: ExperienceItemProps[];
+  education: Education[]; 
+  skills: Skill[];
+  certificates?: Certificate[];
+}

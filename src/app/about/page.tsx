@@ -45,7 +45,7 @@ const About = () => {
   } = defaultProps;
 
   return (
-    <section id={id} className="py-16 relative overflow-hidden min-h-screen">
+    <section id={id} className="py-10 sm:py-24 relative overflow-hidden min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AboutHeader title={title} />

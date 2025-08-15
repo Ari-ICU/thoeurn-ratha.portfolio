@@ -1,12 +1,14 @@
 "use client";
 
 import Head from "next/head";
+import { resume } from "@/data/resume";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ResumeHeader from "@/components/resume/ResumeHeader";
 import ResumeSection from "@/components/resume/ResumeSection";
 import ExperienceItem from "@/components/resume/ExperienceItem";
 import EducationItem from "@/components/resume/EducationItem";
+import Certificates from "@/components/resume/Certificates";
 import SkillsList from "@/components/resume/SkillsList";
 
 export default function ResumePage() {
@@ -71,59 +73,30 @@ export default function ResumePage() {
 
         {/* Experience */}
         <ResumeSection title="Experience">
-          <ExperienceItem
-            role="Senior Frontend Developer"
-            company="TechCorp"
-            period="2021 – Present"
-            achievements={[
-              "Led migration to Next.js & TypeScript",
-              "Improved performance by 40%",
-              "Mentored 4 junior developers",
-            ]}
-          />
-          <ExperienceItem
-            role="Frontend Developer"
-            company="WebStudio"
-            period="2019 – 2021"
-            achievements={[
-              "Built and maintained React apps",
-              "Integrated REST APIs",
-              "Improved UI accessibility",
-            ]}
-          />
+          {resume.experience.map((exp, idx) => (
+            <ExperienceItem
+              key={idx}
+              title={exp.title}
+              company={exp.company}
+              date={exp.date}
+              description={exp.description}
+            />
+          ))}
         </ResumeSection>
 
         {/* Education */}
         <ResumeSection title="Education">
-          <EducationItem
-            degree="Master of Science in Computer Science"
-            institution="Stanford University"
-            period="2020 – 2022"
-            description="Focused on artificial intelligence and distributed systems. Graduated with honors."
-            logo="/logos/stanford.png"
-          />
-          <EducationItem
-            degree="Master of Science in Computer Science"
-            institution="Stanford University"
-            period="2020 – 2022"
-            description="Focused on artificial intelligence and distributed systems. Graduated with honors."
-            logo="/logos/stanford.png"
-          />
+          <EducationItem education={resume.education} />
         </ResumeSection>
 
+        {/* Certificate */}
+        <ResumeSection title="Certification">
+          <Certificates certificates={resume.certificates ?? []} />
+        </ResumeSection>
         {/* Skills */}
         <ResumeSection title="Skills">
-          <SkillsList
-            skills={[
-              { name: "JavaScript", level: 90 },
-              { name: "React", level: 85 },
-              { name: "TypeScript", level: 80 },
-              { name: "Next.js", level: 75 },
-              { name: "Tailwind CSS", level: 80 },
-            ]}
-          />
+          <SkillsList skills={resume.skills ?? []} />
         </ResumeSection>
-
       </main>
 
       <Footer />

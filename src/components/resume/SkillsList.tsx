@@ -1,9 +1,5 @@
 import React from "react";
-
-interface Skill {
-  name: string;
-  level: number; // 0 to 100
-}
+import { Skill } from "@/types";
 
 interface SkillsListProps {
   skills: Skill[];

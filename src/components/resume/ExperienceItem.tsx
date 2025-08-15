@@ -1,13 +1,7 @@
 import React from "react";
+import { ExperienceItemProps } from "@/types";
 
-interface ExperienceItemProps {
-  role: string;
-  company: string;
-  period: string;
-  achievements: string[];
-}
-
-const ExperienceItem: React.FC<ExperienceItemProps> = ({ role, company, period, achievements }) => {
+const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, company, date, description }) => {
   return (
     <div className="relative pl-8 mb-8">
       {/* Timeline Dot */}
@@ -17,12 +11,12 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ role, company, period, 
 
       <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
         <div className="flex justify-between items-center mb-1">
-          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{role}</h4>
-          <span className="text-sm text-gray-500 dark:text-gray-400">{period}</span>
+          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{title}</h4>
+          <span className="text-sm text-gray-500 dark:text-gray-400">{date}</span>
         </div>
         <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-3">{company}</p>
         <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
-          {achievements.map((item, idx) => (
+          {description.map((item, idx) => (
             <li key={idx}>{item}</li>
           ))}
         </ul>

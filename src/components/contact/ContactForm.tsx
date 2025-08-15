@@ -66,7 +66,7 @@ const ContactForm = () => {
 
   return (
     <section className="relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center mb-5">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 animate-fade-in">
             Get in Touch
@@ -83,7 +83,7 @@ const ContactForm = () => {
         </div>
 
         <div
-          className="max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 sm:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 animate-slide-up"
+          className="max-w-lg mx-auto bg-white dark:bg-gray-800 p-4 sm:p-8 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 animate-slide-up"
           role="form"
           aria-labelledby="contact-form-title"
         >
