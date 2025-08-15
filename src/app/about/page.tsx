@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Head from 'next/head';
 import AboutHeader from '@/components/about/AboutHeader';
 import AboutContent from '@/components/about/AboutContent';
 import AboutStats from '@/components/about/AboutStats';
@@ -43,6 +44,13 @@ const About = () => {
   
   return (
     <section id={id} className="py-10 sm:py-24 relative overflow-hidden">
+      <Head>
+        <title>{title} | My Portfolio</title>
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AboutHeader title={title} />
