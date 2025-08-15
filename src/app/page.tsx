@@ -11,6 +11,24 @@ import Project from '@/app/projects/page';
 export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-950 dark:to-black">
+      <Head>
+        <title>Thoeurn Ratha – Portfolio & Projects</title>
+        <meta
+          name="description"
+          content="Welcome to Thoeurn Ratha's portfolio. Explore my latest projects, skills, and contact information for collaborations and opportunities."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Thoeurn Ratha – Portfolio & Projects" />
+        <meta
+          property="og:description"
+          content="Discover Thoeurn Ratha's work, projects, and ways to connect for collaborations and opportunities."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10 z-0 pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -36,11 +54,11 @@ export default function Home() {
         Skip to main content
       </a>
 
-      <Header  />
+      <Header />
 
       <main id="main-content" className="flex-1 relative z-10">
         <Hero />
-        <About  />
+        <About />
         <Project />
         <Contact />
       </main>
@@ -83,7 +101,6 @@ export default function Home() {
           animation-delay: 0.4s;
         }
 
-        /* Reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
           html {
             scroll-behavior: auto;
