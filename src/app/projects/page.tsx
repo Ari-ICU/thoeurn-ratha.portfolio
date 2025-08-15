@@ -47,7 +47,7 @@ const ProjectList: React.FC = () => {
 
       <section
         id="projects"
-        className="py-10 sm:py-24 relative min-h-screen overflow-hidden"
+        className="py-10 sm:py-24 relative overflow-hidden"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}

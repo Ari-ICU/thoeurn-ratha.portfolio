@@ -22,10 +22,8 @@ const defaultProps = {
     'C++', 'Java', 'Spring', 'PHP', 'Laravel', 'Postman'
   ],
   showStats: true,
-  showButtons: true,
-  primaryButtonText: 'View My Work',
-  secondaryButtonText: 'Get In Touch',
-  avatar: '/images/avatar.jpg', // fallback avatar
+  avatar: '/images/avatar.jpg', 
+  text: 'Open to Work'
 };
 
 const About = () => {
@@ -38,14 +36,13 @@ const About = () => {
     projectsCount,
     technologies,
     showStats,
-    showButtons,
-    primaryButtonText,
-    secondaryButtonText,
     avatar,
+    text
   } = defaultProps;
 
+  
   return (
-    <section id={id} className="py-10 sm:py-24 relative overflow-hidden min-h-screen">
+    <section id={id} className="py-10 sm:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AboutHeader title={title} />
@@ -73,7 +70,7 @@ const About = () => {
 
             {/* Visual */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <AboutVisual avatar={avatar} />
+              <AboutVisual avatar={avatar} text={text} />
             </div>
           </div>
         </div>

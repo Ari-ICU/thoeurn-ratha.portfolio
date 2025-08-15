@@ -5,13 +5,8 @@ import { FaEnvelope, FaTelegram, FaMapMarkerAlt, FaGlobe, FaClock } from "react-
 import ContactCard from "./ContactCard";
 import { ContactProps } from "@/types";
 
-interface ExtendedContactProps extends ContactProps {
-  location?: string;
-  website?: string;
-  hours?: string;
-}
 
-const ContactInfo: React.FC<ExtendedContactProps> = ({ email, phone, location, website, hours }) => {
+const ContactInfo: React.FC<ContactProps> = ({ email, phone, location, website, hours }) => {
   return (
     <section
       className="relative overflow-hidden"

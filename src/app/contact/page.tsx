@@ -86,7 +86,7 @@ const Contact = () => {
 
       <section
         id={id}
-        className="py-10 sm:py-24 relative min-h-screen overflow-hidden"
+        className="py-10 sm:py-24 relative overflow-hidden"
         role="region"
         aria-labelledby="contact-section-title"
       >

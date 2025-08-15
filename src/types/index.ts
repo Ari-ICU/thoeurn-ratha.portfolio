@@ -35,25 +35,16 @@ export interface ProjectProps {
 }
 
 export interface ContactProps {
-  /** Section ID for anchor linking */
   id?: string;
-
-  /** Main title of the contact section */
   title?: string;
-
-  /** Subtitle or description under the title */
   subtitle?: string;
-
-  /** Contact email */
   email?: string;
-
-  /** Contact phone number */
   phone?: string;
+  location?: string;
+  website?: string;
+  hours?: string;
 
 }
-
-// src/types/index.ts
-
 export interface Certificate {
   title: string;
   issuer: string;
@@ -80,6 +71,12 @@ export interface Education {
   period: string;
   description?: string;
   logo?: string;
+}
+
+export interface ResumeHeaderProps {
+  name: string;
+  tagline: string;
+  imageUrl?: string; 
 }
 
 export interface ResumeProps {

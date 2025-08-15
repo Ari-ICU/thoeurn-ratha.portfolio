@@ -2,9 +2,10 @@ import React from 'react';
 
 interface AboutVisualProps {
   avatar?: string;
+  text?: string;
 }
 
-const AboutVisual: React.FC<AboutVisualProps> = ({ avatar }) => {
+const AboutVisual: React.FC<AboutVisualProps> = ({ avatar, text }) => {
   return (
     <div className="relative animate-fade-in-up">
       {/* Main Profile Container with Enhanced Shadow & Border */}
@@ -53,7 +54,7 @@ const AboutVisual: React.FC<AboutVisualProps> = ({ avatar }) => {
 
       {/* Floating badge - "Available for Work" */}
       <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-bounce text-nowrap z-10 transform -rotate-12 hover:rotate-0 transition-transform duration-300">
-        Open to Work
+        {text}
       </div>
 
       {/* Optional subtle glow behind avatar */}

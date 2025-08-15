@@ -1,10 +1,7 @@
 import React from "react";
+import { ResumeHeaderProps } from "@/types"
 
-interface ResumeHeaderProps {
-  name: string;
-  tagline: string;
-  imageUrl?: string; // Optional profile image
-}
+
 
 const ResumeHeader: React.FC<ResumeHeaderProps> = ({ name, tagline, imageUrl }) => {
   return (
