@@ -36,54 +36,81 @@ Environment Variables
 
 This project uses environment variables for secrets such as Telegram bot token and chat ID.  
 
-Create a .env.local file in the root of your project:
+Create a .env.local or .env file in the root of your project:
 
 TELEGRAM_BOT_TOKEN=your_bot_token_here
-TELEGRAM_CHAT_ID=your_chat_id_here
+# Thoeurn Ratha — Personal Portfolio
 
-Important: Do not commit .env.local to GitHub. It is ignored by default via .gitignore.
+This repository is a personal portfolio built with Next.js, TypeScript, and Tailwind CSS. It showcases projects, a resume section, services, and a contact form that can send messages directly to Telegram.
 
----
+The app is optimized for deployment on Vercel but works locally with the standard Next.js development workflow.
 
-Fonts
+## Features
 
-This project uses next/font to automatically optimize and load Geist, a font family from Vercel.
+- Modern Next.js (App Router) + TypeScript setup
+- Tailwind CSS for utility-first styling
+- Responsive, accessible components (Header, Footer, Hero, Projects, Resume, Contact)
+- Contact form that posts messages to Telegram using a bot (serverless route)
+- Optimized images in `public/` for each project
 
----
+## Quickstart
 
-Learn More
+1. Install dependencies
 
-To learn more about Next.js, check out the following resources:
+```bash
+npm install
+# or
+pnpm install
+```
 
-- Next.js Documentation - https://nextjs.org/docs
-- Learn Next.js - https://nextjs.org/learn
-- Next.js GitHub Repository - https://github.com/vercel/next.js
+2. Run the development server
 
----
+```bash
+npm run dev
+# or
+pnpm dev
+```
 
-Deploy on Vercel
+Open http://localhost:3000 in your browser.
 
-The easiest way to deploy your Next.js app is to use the Vercel Platform - https://vercel.com/new
+You can edit pages under `src/app/` and components under `src/components/`.
 
-Steps:
+## Environment variables
 
-1. Push your project to GitHub.
-2. Go to Vercel Dashboard and import your GitHub repository.
-3. Add your Environment Variables in Vercel:
-   - TELEGRAM_BOT_TOKEN
-   - TELEGRAM_CHAT_ID
-4. Deploy your project. Vercel will handle building and hosting automatically.
+The contact form sends messages to Telegram. Provide the following environment variables for local development in a `.env.local` file (do not commit this file):
 
----
+```env
+NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=your_bot_token_here
+NEXT_PUBLIC_TELEGRAM_CHAT_ID=your_chat_id_here
+```
 
-Contact Form
+Notes
+- The repository contains a server route at `src/app/api/sendTelegramMessage/route.ts` used to forward contact form submissions to the Telegram API — ensure the variables above are available to that route.
+- For production on Vercel, add the same variables in your Project Settings > Environment Variables.
 
-- The contact form submits messages to your Telegram account using the bot token and chat ID.
-- Make sure your environment variables are correctly set in both .env.local for local dev and Vercel for production.
-- Any errors in sending messages (like a 500 error) are usually caused by missing or incorrect environment variables.
+## Development notes
 
----
+- TypeScript is configured in `tsconfig.json`. Run `npx tsc --noEmit` to check types.
+- ESLint can be run with `npm run lint`. If ESLint prompts for configuration the first time, choose the settings you prefer (or I can add a default config if you want).
 
-License
+## Deployment
 
-This project is MIT licensed.
+This project is ready for Vercel. To deploy:
+
+1. Push to GitHub
+2. Import the repository at https://vercel.com/new
+3. Add the environment variables (`NEXT_PUBLIC_TELEGRAM_BOT_TOKEN`, `NEXT_PUBLIC_TELEGRAM_CHAT_ID`) in the Vercel dashboard
+4. Deploy — Vercel will build and host the app automatically
+
+## Contact form behavior
+
+- The contact form validates inputs client-side and then sends the message via the Telegram bot endpoint.
+- If you want to change the destination (e.g., email, other webhook), update `src/app/api/sendTelegramMessage/route.ts` and the form component in `src/components/contact/ContactForm.tsx`.
+
+## Contributing
+
+If you'd like to contribute or request changes, open an issue or send a pull request. Keep changes small and focused.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
