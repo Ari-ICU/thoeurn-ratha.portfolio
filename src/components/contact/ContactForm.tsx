@@ -58,41 +58,11 @@ const ContactForm = () => {
     setStatus("sending");
 
     try {
-      const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
-
-      const message = `
-📬 *New Contact Form Submission*  
-👤 *Name*: ${formData.name}  
-📧 *Email*: [${formData.email}](mailto:${formData.email})  
-🆔 *Telegram*: ${formData.telegram
-          ? `@[${formData.telegram}](https://t.me/${formData.telegram})`
-          : "Not provided"}  
-💬 *Message*:
-━━━━━━━━━━━━━━━━━━━━━━━━
-${formData.message}
-━━━━━━━━━━━━━━━━━━━━━━━━
-🕒 *Received*: ${new Date().toLocaleString("en-US", {
-            timeZone: "Asia/Phnom_Penh",
-            dateStyle: "medium",
-            timeStyle: "short",
-          })} ICT
-      `;
-
-      const response = await fetch(
-        `https://api.telegram.org/bot${botToken}/sendMessage`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-            parse_mode: "Markdown",
-          }),
-        }
-      );
+      const response = await fetch("/api/sendTelegramMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) throw new Error("Failed to send to Telegram");
 
@@ -108,6 +78,7 @@ ${formData.message}
     }
   };
 
+
   return (
     <section className="relative">
       <div className="container mx-auto">
@@ -119,7 +90,7 @@ ${formData.message}
             I strive to respond within 24 hours. You can reach out via email,
             Telegram, or connect through my social media channels.
           </p>
-        
+
         </div>
 
         <div
