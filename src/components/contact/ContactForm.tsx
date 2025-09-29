@@ -30,8 +30,10 @@ const ContactForm = () => {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.telegram.trim()) newErrors.telegram = "Telegram handle is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (formData.telegram.trim() && !/^[A-Za-z0-9_]{5,}$/.test(formData.telegram)) {
+      newErrors.telegram = "Telegram username must be at least 5 characters and contain only letters, numbers, or underscores";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -41,7 +43,8 @@ const ContactForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const sanitizedValue = name === "telegram" ? value.replace(/^@+/, "") : value;
+    setFormData((prev) => ({ ...prev, [name]: sanitizedValue }));
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -62,11 +65,20 @@ const ContactForm = () => {
 📬 *New Contact Form Submission*  
 👤 *Name*: ${formData.name}  
 📧 *Email*: [${formData.email}](mailto:${formData.email})  
-📱 *Telegram*: ${formData.telegram}  
-💬 *Message*:  
-${formData.message}  
-🕒 *Received*: ${new Date().toLocaleString('en-US', { timeZone: 'UTC', dateStyle: 'medium', timeStyle: 'short' })} UTC
-`;
+🆔 *Telegram*: ${formData.telegram
+          ? `@[${formData.telegram}](https://t.me/${formData.telegram})`
+          : "Not provided"}  
+💬 *Message*:
+━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.message}
+━━━━━━━━━━━━━━━━━━━━━━━━
+🕒 *Received*: ${new Date().toLocaleString("en-US", {
+            timeZone: "Asia/Phnom_Penh",
+            dateStyle: "medium",
+            timeStyle: "short",
+          })} ICT
+      `;
+
       const response = await fetch(
         `https://api.telegram.org/bot${botToken}/sendMessage`,
         {
@@ -98,15 +110,14 @@ ${formData.message}
 
   return (
     <section className="relative">
-      <div className="container mx-auto ">
+      <div className="container mx-auto">
         <div className="max-w-2xl mx-auto text-center mb-5">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 animate-fade-in">
             Get in Touch
           </h2>
-
           <p className="text-lg text-gray-500 dark:text-gray-400 animate-fade-in-up mb-2">
             I strive to respond within 24 hours. You can reach out via email,
-            phone, or connect through my social media channels.
+            Telegram, or connect through my social media channels.
           </p>
           <p className="text-lg text-gray-500 dark:text-gray-400 animate-fade-in-up">
             Whether it’s a new project idea, feedback, or just a friendly hello,
@@ -229,24 +240,29 @@ ${formData.message}
                   htmlFor="telegram"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 transition-all duration-300"
                 >
-                  Telegram Handle
+                  Telegram Username (optional)
                 </label>
-                <input
-                  type="text"
-                  id="telegram"
-                  name="telegram"
-                  value={formData.telegram}
-                  onChange={handleChange}
-                  placeholder="Enter your Telegram username (e.g., @username)"
-                  className={`w-full px-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300
-                    ${errors.telegram
-                      ? "border-red-500 focus:ring-red-300"
-                      : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
-                    } 
-                    bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
-                  aria-invalid={!!errors.telegram}
-                  aria-describedby={errors.telegram ? "telegram-error" : undefined}
-                />
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-5 text-gray-400 dark:text-gray-300">
+                    @
+                  </span>
+                  <input
+                    type="text"
+                    id="telegram"
+                    name="telegram"
+                    value={formData.telegram}
+                    onChange={handleChange}
+                    placeholder="YourTelegramUsername"
+                    className={`w-full pl-10 pr-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300
+                      ${errors.telegram
+                        ? "border-red-500 focus:ring-red-300"
+                        : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
+                      } 
+                      bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
+                    aria-invalid={!!errors.telegram}
+                    aria-describedby={errors.telegram ? "telegram-error" : undefined}
+                  />
+                </div>
                 {errors.telegram && (
                   <p
                     id="telegram-error"
@@ -292,9 +308,7 @@ ${formData.message}
                     } 
                     bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
                   aria-invalid={!!errors.message}
-                  aria-describedby={
-                    errors.message ? "message-error" : undefined
-                  }
+                  aria-describedby={errors.message ? "message-error" : undefined}
                 />
                 {errors.message && (
                   <p
@@ -326,7 +340,7 @@ ${formData.message}
                 className={`w-full px-6 py-3 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2
                   ${isSubmitting
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-gradient-to-r  from-green-900 to-cyan-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                    : "bg-gradient-to-r from-green-900 to-cyan-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                   } 
                   text-white shadow-md`}
                 aria-label={isSubmitting ? "Sending message" : "Send message"}
@@ -403,18 +417,6 @@ ${formData.message}
           </div>
         </div>
       </div>
-
-      {/* Background Pattern
-      <div className="absolute inset-0 pointer-events-none opacity-10 dark:opacity-20 z-0">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="2" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
-      </div> */}
 
       {/* Animations */}
       <style jsx>{`
