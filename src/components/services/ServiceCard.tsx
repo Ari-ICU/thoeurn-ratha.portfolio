@@ -37,9 +37,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, image, ta
             {/* Image */}
             <div className="w-full relative">
                 {image ? (
-                    <img
+                    <Image
                         src={image}
                         alt={title}
+                        width={400}
+                        height={250}
+                        quality={80}
+                        placeholder="blur"
+                        blurDataURL="/placeholder.png" // Optional: a small base64 image for better UX
+                        priority={false}
+                        loading="lazy"
                         onError={(e) => {
                             const target = e.currentTarget;
                             target.onerror = null;

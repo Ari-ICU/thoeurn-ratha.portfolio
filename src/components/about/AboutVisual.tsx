@@ -11,7 +11,7 @@ const AboutVisual: React.FC<AboutVisualProps> = ({ avatar, text }) => {
       {/* Main Profile Container with Enhanced Shadow & Border */}
       <div className="relative inline-block">
         {avatar ? (
-          <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/20 hover:ring-blue-200/40 transition-all duration-500 transform hover:scale-105">
+          <div className="w-64 h-64 sm:w-72 sm:h-full rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/20 hover:ring-blue-200/40 transition-all duration-500 transform hover:scale-105">
             <img
               src={avatar}
               alt="Profile Picture"

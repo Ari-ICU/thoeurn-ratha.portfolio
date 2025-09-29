@@ -34,18 +34,20 @@ export default function Footer() {
 
   const socialLinks = [
     { name: "GitHub", icon: FaGithub, href: "https://github.com/Ari-ICU" },
-    {
-      name: "LinkedIn",
-      icon: FaLinkedin,
-      href: "https://linkedin.com/in/yourusername",
-    },
-    { name: "Twitter", icon: FaTwitter, href: "https://twitter.com/yourhandle" },
-    { name: "Telegram", icon: FaTelegram, href: "https://t.me/yourusername" },
+    // {
+    //   name: "LinkedIn",
+    //   icon: FaLinkedin,
+    //   href: "https://linkedin.com/in/yourusername",
+    // },
+    { name: "Twitter", icon: FaTwitter, href: "https://x.com/annoyed500" },
+    { name: "Telegram", icon: FaTelegram, href: "https://t.me/thoeurn_ratha_kh" },
     {
       name: "Email",
       icon: FaEnvelope,
       href: "mailto:thoeurn.ratha.kh@gmail.com",
-    },
+      direct: true, // optional flag if you want to differentiate
+    }
+
   ];
 
   const technologies = ["Next.js", "Tailwind CSS", "TypeScript"];
@@ -66,18 +68,20 @@ export default function Footer() {
               Let’s connect!
             </p>
             <div className="flex flex-wrap gap-3">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
-                >
-                  <social.icon className="h-5 w-5" />
-                </Link>
-              ))}
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.href}
+                    {...(!social.direct && { target: "_blank", rel: "noopener noreferrer" })}
+                    aria-label={social.name}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </Link>
+                ))}
+              </div>
+
             </div>
           </div>
 
@@ -118,7 +122,7 @@ export default function Footer() {
         <hr className="border-gray-800 my-8" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto ">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full mx-auto ">
           {/* Copyright Section */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mb-4 md:mb-0 text-center sm:text-left">
             <p className="text-sm text-gray-400 font-light tracking-wide">

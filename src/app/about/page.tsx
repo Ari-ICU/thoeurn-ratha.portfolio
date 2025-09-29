@@ -56,8 +56,8 @@ const About = () => {
         <AboutHeader title={title} />
 
         {/* Main Content Grid */}
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start lg:items-center">
+        <div className=" mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center">
             {/* Text Content */}
             <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
               <AboutContent
