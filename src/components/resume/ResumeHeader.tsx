@@ -2,7 +2,6 @@ import React from "react";
 import { ResumeHeaderProps } from "@/types"
 
 
-
 const ResumeHeader: React.FC<ResumeHeaderProps> = ({ name, tagline, imageUrl }) => {
   return (
     <header className="mb-10">

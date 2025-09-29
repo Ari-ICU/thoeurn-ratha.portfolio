@@ -31,7 +31,7 @@ export const resume: ResumeProps = {
       period: "2019 – 2023",
       description:
         "Focused on software development, web technologies, and database systems.",
-      logo: "/images/rupp-logo.png",
+      logo: "/images/rupp.png",
     },
     {
       degree: "High School Diploma",
@@ -39,7 +39,7 @@ export const resume: ResumeProps = {
       period: "2016 – 2019",
       description:
         "Major in science and mathematics, active in coding clubs and competitions.",
-      logo: "/images/rupp-logo.png",
+      logo: "/images/rupp.png",
     },
   ],
   skills: [

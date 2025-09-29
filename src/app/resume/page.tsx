@@ -11,7 +11,15 @@ import EducationItem from "@/components/resume/EducationItem";
 import Certificates from "@/components/resume/Certificates";
 import SkillsList from "@/components/resume/SkillsList";
 
+
 export default function ResumePage() {
+
+  const ResumeHeaderData = {
+    name: "Thoeurn Ratha",
+    tagline: "Senior Frontend Developer",
+    imageUrl: "/images/avatar.jpg",
+  }
+
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-950 dark:to-black">
       {/* Background Pattern */}
@@ -57,18 +65,18 @@ export default function ResumePage() {
         className="flex-1 relative z-10 container mx-auto px-6 py-12 max-w-4xl"
       >
         <Head>
-          <title>Resume | John Doe</title>
+          <title>Resume | Thoeurn Ratha</title>
           <meta
             name="description"
-            content="Resume of John Doe, Senior Frontend Developer."
+            content="Resume of Thoeurn Ratha, Senior Frontend Developer."
           />
         </Head>
 
         {/* Resume Header */}
         <ResumeHeader
-          imageUrl="test"
-          name="Thoeurn Ratha"
-          tagline="Senior Frontend Developer"
+          name={ResumeHeaderData.name}
+          tagline={ResumeHeaderData.tagline}
+          imageUrl={ResumeHeaderData.imageUrl}
         />
 
         {/* Experience */}

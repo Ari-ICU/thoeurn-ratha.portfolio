@@ -15,8 +15,8 @@ const defaultProps = {
     "I'm a full-stack developer with experience building scalable web applications that make a difference.",
   subtitle:
     "When I'm not coding, you can find me exploring cutting-edge technologies, contributing to open-source projects, or sharing knowledge with the developer community.",
-  yearsExperience: 5,
-  projectsCount: 50,
+  yearsExperience: 1,
+  projectsCount: 20,
   technologies: [
     'JavaScript', 'React', 'Next.js', 'TypeScript', 'Node.js', 'Python',
     'Tailwind', 'PostgreSQL', 'MongoDB', 'Docker', 'Redis', 'GitHub',

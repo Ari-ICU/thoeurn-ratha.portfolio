@@ -44,8 +44,8 @@ const Contact = () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Your Name",
-          url: "https://yourportfolio.com",
+          name: "Thoeurn Ratha",
+          url: "https://thoeurn-ratha.vercel.app/",
           email: `mailto:${email}`,
           telephone: phone,
           description:
@@ -93,8 +93,8 @@ const Contact = () => {
                 email={email}
                 phone={phone}
                 location="Songkat Terk Thla, Khan Sen Sok, Phnom Penh"
-                website="https://example.com"
-                hours="Mon-Fri: 9am - 6pm"
+                website="https://thoeurn-ratha.vercel.app/"
+                hours="Mon-Fri: 8am - 5pm GMT+7"
               />
             </div>
           </div>
