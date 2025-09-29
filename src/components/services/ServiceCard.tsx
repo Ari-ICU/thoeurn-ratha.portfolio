@@ -35,7 +35,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, image, ta
     return (
         <div className="group bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2 overflow-hidden">
             {/* Image */}
-            <div className="w-full h-48 sm:h-56 lg:h-64 relative">
+            <div className="w-full relative">
                 {image ? (
                     <img
                         src={image}

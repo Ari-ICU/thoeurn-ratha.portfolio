@@ -65,13 +65,13 @@ const ProjectPage = () => {
 
       <Header />
 
-      <main id="main-content" className="flex-1 relative z-10 space-y-20 py-16">
+      <main id="main-content" className="flex-1 relative z-10 py-10 space-y-12">
         <Head>
           <title>{project.title} | My Portfolio</title>
           <meta name="description" content={project.description} />
         </Head>
-        
-        <div className="px-8 md:px-16">
+
+        <div className=" container mx-auto px-4">
           <button
             onClick={() => router.back()}
             className=" px-4  bg-blue-500 text-white rounded hover:bg-blue-600 transition"
@@ -81,16 +81,28 @@ const ProjectPage = () => {
         </div>
 
 
-        <ProjectHeader
-          title={project.title}
-          subtitle={project.subtitle}
-          heroImage={project.heroImage}
-        />
-        <ProjectOverview
-          description={project.description}
-          technologies={project.technologies}
-          goals={project.goals}
-        />
+        <div className="container mx-auto py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column: Project Header */}
+            <div>
+              <ProjectHeader
+                title={project.title}
+                subtitle={project.subtitle}
+                heroImage={project.heroImage}
+              />
+            </div>
+
+            {/* Right Column: Project Overview */}
+            <div>
+              <ProjectOverview
+                description={project.description}
+                technologies={project.technologies}
+                goals={project.goals}
+              />
+            </div>
+          </div>
+        </div>
+
         <ProjectGallery
           images={project.images}
         />
