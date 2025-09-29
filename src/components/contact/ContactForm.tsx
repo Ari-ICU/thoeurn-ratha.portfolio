@@ -387,7 +387,7 @@ ${formData.message}
                       clipRule="evenodd"
                     />
                   </svg>
-                  Message sent successfully! I'll get back to you soon.
+                  Message sent successfully! I&apos;ll get back to you soon.
                 </p>
               )}
 

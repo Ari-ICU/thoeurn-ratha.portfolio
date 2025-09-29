@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { ResumeHeaderProps } from "@/types"
 
 
@@ -10,9 +11,11 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({ name, tagline, imageUrl }) 
         {imageUrl && (
           <div className="flex-shrink-0">
             <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900 shadow-lg transform transition-transform hover:scale-105">
-              <img
+              <Image
                 src={imageUrl}
                 alt={`${name}'s profile`}
+                width={128}
+                height={128}
                 className="w-full h-full object-cover"
               />
             </div>

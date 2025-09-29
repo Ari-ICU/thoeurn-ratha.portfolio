@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
 // Define TypeScript interfaces
@@ -13,12 +13,6 @@ interface Project {
   image?: string;
 }
 
-interface ProjectsProps {
-  id?: string;
-  title?: string;
-  subtitle?: string;
-  projects?: Project[];
-}
 
 // Project Card Component
 const ProjectCard: React.FC<Project> = ({ title, description, technologies, url, image }) => (
@@ -29,9 +23,16 @@ const ProjectCard: React.FC<Project> = ({ title, description, technologies, url,
   >
     {image && (
       <div className="w-full rounded-lg overflow-hidden mb-4">
-        <img
+        <Image
           src={image}
           alt={`${title} preview`}
+          width={400}
+          height={250}
+          quality={80}
+          placeholder="blur"
+          blurDataURL="/placeholder.png" // Optional: a small base64 image for better UX
+          priority={false}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>

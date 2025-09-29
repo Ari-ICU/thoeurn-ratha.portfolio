@@ -1,31 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { ProjectProps } from "@/types";
-
-const fallbackSVG = (
-  <svg
-    className="w-full h-full text-gray-300 dark:text-gray-600"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 200 200"
-  >
-    <rect width="200" height="200" fill="currentColor" />
-    <text
-      x="50%"
-      y="50%"
-      textAnchor="middle"
-      dominantBaseline="middle"
-      fontSize="20"
-      fill="white"
-    >
-      No Image
-    </text>
-  </svg>
-);
 
 const ProjectList: React.FC = () => {
   // State to control number of projects shown
@@ -70,14 +50,16 @@ const ProjectList: React.FC = () => {
                 className="group block bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2 overflow-hidden"
               >
                 <div className="w-full h-48 sm:h-56 lg:h-64 relative">
-                  <img
+                  <Image
                     src={project.heroImage}
                     alt={project.title}
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.onerror = null;
-                      target.replaceWith(fallbackSVG as any);
-                    }}
+                    layout="fill"
+                    objectFit="cover"
+                    quality={80}
+                    placeholder="blur"
+                    blurDataURL="/placeholder.png"
+                    priority={false}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

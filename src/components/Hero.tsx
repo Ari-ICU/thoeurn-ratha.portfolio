@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const techStack = [
@@ -83,13 +84,15 @@ const Hero = () => {
               }}
               aria-hidden="true"
             >
-              <img
+              <Image
                 src={techStack[index].src}
                 alt={`${techStack[index].name} icon`}
+                width={64}
+                height={64}
                 className="w-full h-full object-contain brightness-125"
                 loading="lazy"
-                width="64"
-                height="64"
+                priority={false}
+                quality={80}
               />
             </div>
           ))}
@@ -109,7 +112,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 opacity-90 max-w-3xl mx-auto animate-fade-in-up">
-            I'm a passionate developer crafting innovative digital solutions with modern technologies.
+            I&apos;m a passionate developer crafting innovative digital solutions with modern technologies.
           </p>
 
           {/* CTA Buttons */}

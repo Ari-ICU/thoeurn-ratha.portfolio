@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface AboutVisualProps {
   avatar?: string;
@@ -12,9 +13,12 @@ const AboutVisual: React.FC<AboutVisualProps> = ({ avatar, text }) => {
       <div className="relative inline-block">
         {avatar ? (
           <div className="w-64 h-64 sm:w-72 sm:h-full rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/20 hover:ring-blue-200/40 transition-all duration-500 transform hover:scale-105">
-            <img
+            <Image
               src={avatar}
               alt="Profile Picture"
+              width={288}
+              height={288}
+              quality={90}
               className="w-full h-full object-cover"
               loading="eager"
             />

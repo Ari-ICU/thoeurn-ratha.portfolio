@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Education } from "@/types";
 
 
@@ -14,9 +15,11 @@ const EducationItem: React.FC<EducationItemProps> = ({ education }) => {
           <div className="p-6 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <div className="flex items-center gap-4 mb-4">
               {edu.logo && (
-                <img
+                <Image
                   src={edu.logo}
                   alt={`${edu.institution} logo`}
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover border border-gray-300 dark:border-gray-600"
                 />
               )}

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Head from "next/head";
-import { ContactProps } from "@/types";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
 

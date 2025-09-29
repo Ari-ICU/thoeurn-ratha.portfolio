@@ -47,11 +47,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, image, ta
                         blurDataURL="/placeholder.png" // Optional: a small base64 image for better UX
                         priority={false}
                         loading="lazy"
-                        onError={(e) => {
-                            const target = e.currentTarget;
-                            target.onerror = null;
-                            target.replaceWith(fallbackSVG as any);
-                        }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                 ) : (
