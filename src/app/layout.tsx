@@ -34,7 +34,7 @@ const bitcount = localFont({
 export const metadata: Metadata = {
   title: "Thoeurn Ratha – Contact & Portfolio",
   description:
-    "Get in touch with Thoeurn Ratha. Find email, phone, location, website, and working hours for inquiries and collaboration.",
+    "I'm Thoeurn Ratha, a passionate web developer specializing in creating modern, responsive, and high-performance web applications. Explore my portfolio to see my projects and skills.",
 };
 
 export default function RootLayout({
