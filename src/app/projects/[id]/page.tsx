@@ -3,6 +3,7 @@
 import React from "react";
 import Head from "next/head";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
@@ -15,6 +16,7 @@ import { ProjectProps } from "@/types";
 
 const ProjectPage = () => {
   const { id } = useParams<{ id: string }>();
+  const router = useRouter();
   const project: ProjectProps | undefined = projects.find((p) => p.id === id);
 
   if (!project) {
@@ -68,6 +70,16 @@ const ProjectPage = () => {
           <title>{project.title} | My Portfolio</title>
           <meta name="description" content={project.description} />
         </Head>
+        
+        <div className="px-8 md:px-16">
+          <button
+            onClick={() => router.back()}
+            className=" px-4  bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          >
+            ← Back
+          </button>
+        </div>
+
 
         <ProjectHeader
           title={project.title}
