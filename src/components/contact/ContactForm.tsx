@@ -5,6 +5,7 @@ import React, { useState } from "react";
 interface FormData {
   name: string;
   email: string;
+  telegram: string;
   message: string;
 }
 
@@ -12,6 +13,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    telegram: "",
     message: "",
   });
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -28,6 +30,7 @@ const ContactForm = () => {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
+    if (!formData.telegram.trim()) newErrors.telegram = "Telegram handle is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
     setErrors(newErrors);
@@ -52,11 +55,40 @@ const ContactForm = () => {
     setStatus("sending");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+
+      const message = `
+📬 *New Contact Form Submission*  
+👤 *Name*: ${formData.name}  
+📧 *Email*: [${formData.email}](mailto:${formData.email})  
+📱 *Telegram*: ${formData.telegram}  
+💬 *Message*:  
+${formData.message}  
+🕒 *Received*: ${new Date().toLocaleString('en-US', { timeZone: 'UTC', dateStyle: 'medium', timeStyle: 'short' })} UTC
+`;
+      const response = await fetch(
+        `https://api.telegram.org/bot${botToken}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: "Markdown",
+          }),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to send to Telegram");
+
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", telegram: "", message: "" });
       setErrors({});
     } catch (error) {
+      console.error(error);
       setStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -113,10 +145,9 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Enter your name"
                   className={`w-full px-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300
-                    ${
-                      errors.name
-                        ? "border-red-500 focus:ring-red-300"
-                        : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
+                    ${errors.name
+                      ? "border-red-500 focus:ring-red-300"
+                      : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
                     } 
                     bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
                   aria-invalid={!!errors.name}
@@ -161,10 +192,9 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Enter your email"
                   className={`w-full px-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300
-                    ${
-                      errors.email
-                        ? "border-red-500 focus:ring-red-300"
-                        : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
+                    ${errors.email
+                      ? "border-red-500 focus:ring-red-300"
+                      : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
                     } 
                     bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
                   aria-invalid={!!errors.email}
@@ -193,6 +223,53 @@ const ContactForm = () => {
                 )}
               </div>
 
+              {/* Telegram Field */}
+              <div className="relative">
+                <label
+                  htmlFor="telegram"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 transition-all duration-300"
+                >
+                  Telegram Handle
+                </label>
+                <input
+                  type="text"
+                  id="telegram"
+                  name="telegram"
+                  value={formData.telegram}
+                  onChange={handleChange}
+                  placeholder="Enter your Telegram username (e.g., @username)"
+                  className={`w-full px-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300
+                    ${errors.telegram
+                      ? "border-red-500 focus:ring-red-300"
+                      : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
+                    } 
+                    bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
+                  aria-invalid={!!errors.telegram}
+                  aria-describedby={errors.telegram ? "telegram-error" : undefined}
+                />
+                {errors.telegram && (
+                  <p
+                    id="telegram-error"
+                    className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1"
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      />
+                    </svg>
+                    {errors.telegram}
+                  </p>
+                )}
+              </div>
+
               {/* Message Field */}
               <div className="relative">
                 <label
@@ -209,10 +286,9 @@ const ContactForm = () => {
                   rows={5}
                   placeholder="Tell me about your project..."
                   className={`w-full px-5 py-3 border rounded-xl focus:ring-2 focus:outline-none transition-all duration-300 resize-none
-                    ${
-                      errors.message
-                        ? "border-red-500 focus:ring-red-300"
-                        : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
+                    ${errors.message
+                      ? "border-red-500 focus:ring-red-300"
+                      : "border-gray-200 focus:ring-blue-300 focus:border-blue-500"
                     } 
                     bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 hover:border-blue-400`}
                   aria-invalid={!!errors.message}
@@ -248,10 +324,9 @@ const ContactForm = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full px-6 py-3 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2
-                  ${
-                    isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-gradient-to-r  from-green-900 to-cyan-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                  ${isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-gradient-to-r  from-green-900 to-cyan-700 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                   } 
                   text-white shadow-md`}
                 aria-label={isSubmitting ? "Sending message" : "Send message"}
