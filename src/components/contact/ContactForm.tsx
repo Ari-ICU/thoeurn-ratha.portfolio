@@ -119,10 +119,7 @@ ${formData.message}
             I strive to respond within 24 hours. You can reach out via email,
             Telegram, or connect through my social media channels.
           </p>
-          <p className="text-lg text-gray-500 dark:text-gray-400 animate-fade-in-up">
-            Whether it’s a new project idea, feedback, or just a friendly hello,
-            don’t hesitate to get in touch!
-          </p>
+        
         </div>
 
         <div
