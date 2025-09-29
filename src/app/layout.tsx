@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Footer from "../components/Footer"; // Import the Footer component
 
 // Import your Bitcount fonts
 const bitcount = localFont({
@@ -32,7 +31,7 @@ const bitcount = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Thoeurn Ratha – Contact & Portfolio",
+  title: "Thoeurn Ratha – Portfolio",
   description:
     "I'm Thoeurn Ratha, a passionate web developer specializing in creating modern, responsive, and high-performance web applications. Explore my portfolio to see my projects and skills.",
 };
