@@ -23,39 +23,46 @@ const ServicePage: React.FC = () => {
                 />
             </Head>
 
-            <main className="">
-                {/* Header */}
-                <ServiceHeader
-                    title="Our Services"
-                    subtitle="Discover what I can do for your projects — from web development to design and consulting."
-                />
+            <section
+                id="services"
+                className="py-10 sm:py-24 relative overflow-hidden"
+            >
+                <main
+                    className="">
 
-                {/* Services Grid */}
-                <section className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-12">
-                    {services.slice(0, visibleCount).map((service) => (
-                        <ServiceCard
-                            key={service.id}
-                            title={service.title}
-                            description={service.description}
-                            image={service.image}
-                            tags={service.tags}
-                        />
-                    ))}
-                </section>
+                    {/* Header */}
+                    <ServiceHeader
+                        title="Our Services"
+                        subtitle="Discover the range of services I offer to help bring your ideas to life."
+                    />
+
+                    {/* Services Grid */}
+                    <section className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-12">
+                        {services.slice(0, visibleCount).map((service) => (
+                            <ServiceCard
+                                key={service.id}
+                                title={service.title}
+                                description={service.description}
+                                image={service.image}
+                                tags={service.tags}
+                            />
+                        ))}
+                    </section>
 
 
-                {/* View More Button */}
-                {visibleCount < services.length && (
-                    <div className="text-center mt-12">
-                        <button
-                            onClick={handleViewMore}
-                            className="inline-block px-6 py-3 text-white bg-gradient-to-r from-green-900 to-cyan-700 hover:from-cyan-700 hover:to-green-900 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                            View More Services
-                        </button>
-                    </div>
-                )}
-            </main>
+                    {/* View More Button */}
+                    {visibleCount < services.length && (
+                        <div className="text-center mt-12">
+                            <button
+                                onClick={handleViewMore}
+                                className="inline-block px-6 py-3 text-white bg-gradient-to-r from-green-900 to-cyan-700 hover:from-cyan-700 hover:to-green-900 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                            >
+                                View More Services
+                            </button>
+                        </div>
+                    )}
+                </main>
+            </section>
         </>
     );
 };

@@ -33,10 +33,10 @@ export default function Header() {
 
   // Get correct href for hash links
   const getLink = (name: string) => {
-  // Special case: Resume is its own page
-  if (name === "resume") return "/resume";
-  return pathname === "/" ? `#${name}` : `/#${name}`;
-};
+    // Special case: Resume is its own page
+    if (name === "resume") return "/resume";
+    return pathname === "/" ? `#${name}` : `/#${name}`;
+  };
 
   // Determine active link (pathname pages OR scrolling sections)
   const isActive = (name: string) => {
@@ -50,16 +50,14 @@ export default function Header() {
     <li>
       <Link
         href={name === "home" ? "/" : getLink(name)}
-        className={`font-medium transition-colors duration-300 relative group ${
-          isActive(name) ? "text-blue-600" : "text-gray-500 hover:text-blue-600"
-        }`}
+        className={`font-medium transition-colors duration-300 relative group ${isActive(name) ? "text-blue-600" : "text-gray-500 hover:text-blue-600"
+          }`}
         onClick={() => setIsMenuOpen(false)}
       >
         {label}
         <span
-          className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
-            isActive(name) ? "w-full" : "w-0 group-hover:w-full"
-          }`}
+          className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${isActive(name) ? "w-full" : "w-0 group-hover:w-full"
+            }`}
         ></span>
       </Link>
     </li>
