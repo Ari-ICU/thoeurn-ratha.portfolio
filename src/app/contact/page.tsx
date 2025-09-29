@@ -65,7 +65,7 @@ const Contact = () => {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-200/15 dark:bg-purple-800/15 rounded-full blur-3xl animate-pulse delay-700"></div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto relative z-10">
           {/* Header */}
           <div className="text-center mb-10">
             <h2
@@ -81,7 +81,7 @@ const Contact = () => {
           </div>
 
           {/* Form & Info Grid */}
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="order-2 lg:order-1 animate-fade-in-up">
               <ContactForm />

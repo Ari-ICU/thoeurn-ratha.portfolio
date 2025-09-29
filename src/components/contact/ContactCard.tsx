@@ -22,7 +22,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
   colorFrom,
   colorTo,
 }) => (
-  <div className={`group flex flex-col sm:flex-row items-center bg-white/90 dark:bg-gray-800/90 backdrop-blur-md p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100/50 dark:border-gray-700/50`}>
+  <div className={`group flex flex-col sm:flex-row items-center bg-white/90 dark:bg-gray-800/90 backdrop-blur-md px-4 sm:px-6 py-5  rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100/50 dark:border-gray-700/50`}>
     <div className={`w-12 h-12 sm:w-14 sm:h-14 ${colorFrom} ${colorTo} bg-gradient-to-br rounded-lg flex items-center justify-center mb-4 sm:mb-0 sm:mr-4 group-hover:scale-105 transition-transform duration-300 shadow-md`}>
       {icon}
     </div>

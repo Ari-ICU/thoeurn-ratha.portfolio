@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const sections = ["home", "about", "projects", "resume", "contact"];
+const sections = ["home", "about", "projects", "services", "resume", "contact"];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -102,6 +102,7 @@ export default function Header() {
             {navItem("home", "Home")}
             {navItem("about", "About")}
             {navItem("projects", "Projects")}
+            {navItem("services", "Services")}
             {navItem("resume", "Resume")}
             {navItem("contact", "Contact")}
           </ul>
@@ -148,6 +149,7 @@ export default function Header() {
               {navItem("home", "Home")}
               {navItem("about", "About")}
               {navItem("projects", "Projects")}
+              {navItem("services", "Services")}
               {navItem("resume", "Resume")}
               {navItem("contact", "Contact")}
             </ul>

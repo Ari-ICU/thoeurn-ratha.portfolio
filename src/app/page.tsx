@@ -7,6 +7,7 @@ import About from '@/app/about/page';
 import Contact from '@/app/contact/page';
 import Footer from '@/components/Footer';
 import Project from '@/app/projects/page';
+import Service from './services/page';
 
 export default function Home() {
   return (
@@ -60,6 +61,7 @@ export default function Home() {
         <Hero />
         <About />
         <Project />
+        <Service />
         <Contact />
       </main>
 

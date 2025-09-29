@@ -12,7 +12,7 @@ import {
   FaArrowUp,
 } from "react-icons/fa";
 
-const sections = ["home", "about", "projects", "resume", "contact"];
+const sections = ["home", "about", "projects", "services", "resume", "contact"];
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(true);
