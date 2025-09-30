@@ -23,7 +23,7 @@ ${message}
         timeZone: "Asia/Phnom_Penh",
         dateStyle: "medium",
         timeStyle: "short",
-    })} ICT
+    })}
 `;
 
     try {
