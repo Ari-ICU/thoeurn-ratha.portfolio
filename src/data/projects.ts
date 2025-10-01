@@ -100,5 +100,31 @@ export const projects: ProjectProps[] = [
     liveDemoUrl: 'https://thoeurn-ratha.vercel.app/',
     githubUrl: 'https://github.com/Ari-ICU/thoeurn-ratha.portfolio',
   },
-  
+  {
+    id: 'ecommerce-demo-app',
+    title: 'Ecommerce Demo App',
+    subtitle: 'A simple ecommerce application',
+    heroImage: '/images/project/ecommerce-demo/1.png',
+    description:
+      'A demo ecommerce application built to practice full-stack development with Next.js. The app allows users to browse products, create and manage content, and share posts on social media. It features user authentication, a responsive design, and supports multiple languages. This project helped me enhance my skills in building scalable web applications and implementing key functionalities.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    goals: [
+      'Practice building a full-stack application with Next.js',
+      'Implement user authentication and authorization',
+      'support multiple languages',
+      'Create a responsive and user-friendly interface',
+      'Enable content creation and management',
+      'Incorporate social sharing features',
+    ],
+    images: [
+      { src: '/images/project/ecommerce-demo/1.png', alt: 'home' },
+      { src: '/images/project/ecommerce-demo/2.png', alt: 'post' },
+      { src: '/images/project/ecommerce-demo/3.png', alt: 'create-post' },
+    ],
+    featuresCompleted: 40,
+    linesOfCode: 10000,
+    teamSize: 1,
+    liveDemoUrl: 'https://demo-ecommerce-business.vercel.app/kh',
+    githubUrl: 'https://github.com/Ari-ICU/demo-ecommerce-business'
+  }
 ];
