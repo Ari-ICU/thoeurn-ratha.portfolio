@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { notFound, usePathname } from "next/navigation";
 
 const sections = ["home", "about", "projects", "services", "resume", "contact"];
 
@@ -62,6 +62,10 @@ export default function Header() {
       </Link>
     </li>
   );
+
+  if (typeof window === "undefined") {
+    notFound();
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-tl from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-950 dark:to-black transition-all duration-300">
