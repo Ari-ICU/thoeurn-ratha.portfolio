@@ -149,7 +149,7 @@ export const projects: ProjectProps[] = [
     featuresCompleted: 45,
     linesOfCode: 11000,
     teamSize: 4,
-    liveDemoUrl: 'https://pos-system-phi.vercel.app/login',
-    githubUrl: ''
+    liveDemoUrl: 'https://pos-client-view-ui.vercel.app/',
+    githubUrl: 'https://github.com/Ari-ICU/pos-client-view-ui'
   }
 ];
