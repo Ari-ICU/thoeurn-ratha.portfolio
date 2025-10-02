@@ -63,7 +63,7 @@ export default function Header() {
     </li>
   );
 
-  if (typeof window === "undefined" && !pathname) {
+  if (typeof window === "undefined" && !navItem) {
     notFound();
   }
 
