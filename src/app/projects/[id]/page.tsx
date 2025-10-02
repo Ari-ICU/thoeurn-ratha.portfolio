@@ -19,6 +19,14 @@ const ProjectPage = () => {
   const router = useRouter();
   const project: ProjectProps | undefined = projects.find((p) => p.id === id);
 
+  if(
+    typeof window !== "undefined" &&
+    !project
+  ){
+    router.push("/not-found");
+    return null;
+  }
+
   if (!project) {
     return (
       <div className="relative min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
