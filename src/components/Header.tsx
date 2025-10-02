@@ -63,9 +63,14 @@ export default function Header() {
     </li>
   );
 
-  if (typeof window === "undefined" && !navItem && !pathname && !activeSection && !getLink) {
-    notFound();
-  }
+  useEffect(() => {
+    if (pathname === "/") {
+      const hash = window.location.hash.slice(1); // e.g., "dsfghjdhyrtf"
+      if (hash && !sections.includes(hash)) {
+        notFound(); // Or redirect to a 404 page
+      }
+    }
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-tl from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-indigo-950 dark:to-black transition-all duration-300">
