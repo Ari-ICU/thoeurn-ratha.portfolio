@@ -2,7 +2,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -23,8 +23,7 @@ const ProjectPage = () => {
     typeof window !== "undefined" &&
     !project
   ){
-    router.push("/not-found");
-    return null;
+    notFound();
   }
 
   if (!project) {
