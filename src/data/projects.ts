@@ -126,5 +126,30 @@ export const projects: ProjectProps[] = [
     teamSize: 1,
     liveDemoUrl: 'https://demo-ecommerce-business.vercel.app/kh',
     githubUrl: 'https://github.com/Ari-ICU/demo-ecommerce-business'
+  },
+  {
+    id: 'pos system',
+    title: 'POS System',
+    subtitle: 'Manage sales and inventory efficiently',
+    heroImage: '/images/project/pos/1.png',
+    description:
+      'A Point of Sale (POS) system designed to streamline sales and inventory management for small businesses. Built with a robust tech stack, it offers features such as product management, sales tracking, and reporting. The system is user-friendly and can be easily integrated into existing business operations to enhance efficiency and accuracy in transactions.',
+    technologies: ['React', 'Tailwind CSS', 'Laravel', 'MySQL'],
+    goals: [
+      'Simplify sales transactions',
+      'Improve inventory tracking',
+      'Generate detailed sales reports',
+      'Enhance user experience for staff',
+      'Integrate with existing business systems',
+    ],
+    images: [
+      { src: '/images/project/pos/1.png', alt: 'sales' },
+      { src: '/images/project/pos/2.png', alt: 'products' },
+    ],
+    featuresCompleted: 45,
+    linesOfCode: 11000,
+    teamSize: 4,
+    liveDemoUrl: 'https://pos-system-phi.vercel.app/login',
+    githubUrl: ''
   }
 ];
