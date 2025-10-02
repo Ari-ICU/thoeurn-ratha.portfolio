@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { notFound } from "next/navigation";
 
 // Import your Bitcount fonts
 const bitcount = localFont({
@@ -41,6 +42,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  if (!children) {
+    notFound();
+  }
+
   return (
     <html lang="en">
       {/* Apply font globally with className */}
