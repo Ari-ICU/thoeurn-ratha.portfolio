@@ -128,7 +128,7 @@ export const projects: ProjectProps[] = [
     githubUrl: 'https://github.com/Ari-ICU/demo-ecommerce-business'
   },
   {
-    id: 'pos system',
+    id: 'pos-system',
     title: 'POS System',
     subtitle: 'Manage sales and inventory efficiently',
     heroImage: '/images/project/pos/1.png',
