@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  if (!children) {
+  if ( typeof window !== "undefined" && !children) {
     notFound();
   }
 
