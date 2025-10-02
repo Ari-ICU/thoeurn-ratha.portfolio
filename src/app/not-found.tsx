@@ -29,7 +29,7 @@ export default function NotFound() {
 					</Link>
 
 					<Link
-						href="/contact"
+						href="/#contact"
 						className="inline-flex items-center gap-2 px-5 py-3 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
 					>
 						Contact me
