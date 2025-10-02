@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { notFound, usePathname } from "next/navigation";
 
 const sections = ["home", "about", "projects", "services", "resume", "contact"];
@@ -20,26 +20,24 @@ export default function Header() {
     }
   }, []);
 
-  // Memoized observer creation
-  const observer = useMemo(
-    () =>
-      new IntersectionObserver(handleIntersection, {
-        rootMargin: "-50% 0px -50% 0px",
-        threshold: 0,
-      }),
-    [handleIntersection]
-  );
-
-  // Optimized scroll spy: only active on home page, reuse observer
+  // Optimized scroll spy: only active on home page, create observer in effect
   useEffect(() => {
-    observerRef.current = observer;
-
     if (pathname !== "/") {
       // Disconnect on non-home pages
-      observer.disconnect();
-      setActiveSection(""); // Clear to avoid stale state
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+      setActiveSection("");
       return;
     }
+
+    // Create observer only on client, in effect
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
+    });
+    observerRef.current = observer;
 
     // Observe sections on home page
     sections.forEach((id) => {
@@ -55,23 +53,15 @@ export default function Header() {
 
     return () => {
       observer.disconnect();
+      observerRef.current = null;
     };
-  }, [pathname, observer]);
-
-  // Cleanup observer on unmount
-  useEffect(() => {
-    return () => {
-      observerRef.current?.disconnect();
-    };
-  }, []);
+  }, [pathname, handleIntersection]);
 
   // Get correct href for hash links (memoized for minor perf gain)
-  const getLink = useMemo(() => {
+  const getLink = useCallback((name: string) => {
     // Special case: Resume is its own page
-    const linkMap: Record<string, string> = {
-      resume: "/resume",
-    };
-    return (name: string) => linkMap[name] || (pathname === "/" ? `#${name}` : `/#${name}`);
+    if (name === "resume") return "/resume";
+    return pathname === "/" ? `#${name}` : `/#${name}`;
   }, [pathname]);
 
   // Determine active link (pathname pages OR scrolling sections)
