@@ -9,7 +9,7 @@ export default function NotFound() {
 					404
 				</h1>
 				<p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-6">
-					Oops — the page you are looking for doesn't exist or has been moved.
+					Oops — the page you are looking for doesn&lsquo;t exist or has been moved.
 				</p>
 
 				<div className="mb-6">
