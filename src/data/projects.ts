@@ -89,7 +89,7 @@ export const projects: ProjectProps[] = [
     heroImage: '/images/project/portfolio/portfolioo-hero.png',
     description: 'A personal portfolio website to showcase my projects, skills, and experience. The site features a clean, modern design with smooth animations and responsive layouts. Built with Next.js and Tailwind CSS, it highlights my technical abilities and serves as a platform for potential employers and collaborators to learn more about me.',
     technologies: ['React', 'Next.js', 'Tailwind', 'TypeScript'],
-    goals: ['Personal branding', 'Project showcase', 'Easy contact', 'Responsive design' , 'SEO optimization'],
+    goals: ['Personal branding', 'Project showcase', 'Easy contact', 'Responsive design', 'SEO optimization'],
     images: [
       { src: '/images/project/portfolio/resume.png', alt: 'resume' },
       { src: '/images/project/portfolio/contact.png', alt: 'contact' },
@@ -151,5 +151,30 @@ export const projects: ProjectProps[] = [
     teamSize: 4,
     liveDemoUrl: 'https://pos-client-view-ui.vercel.app/',
     githubUrl: 'https://github.com/Ari-ICU/pos-client-view-ui'
+  },
+  {
+    id: 'image-to-prompt',
+    title: 'AI Image-to-Prompt Generator',
+    subtitle: 'Turn images into detailed creative prompts',
+    heroImage: '/images/project/prompt/1.png',
+    description:
+      'A web application that converts uploaded images into structured, detailed prompts for AI art models like Midjourney, Stable Diffusion, or DALL-E. Leveraging Ollama\'s vision and text models, it provides accurate image analysis and creative prompt generation, helping artists and designers streamline their workflow.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express', 'Ollama'],
+    goals: [
+      'Automatically analyze images to extract key visual elements',
+      'Generate structured JSON prompts for AI art',
+      'Provide a user-friendly interface for uploading images',
+      'Enable quick copy and reuse of generated prompts',
+      'Ensure reliable backend processing with retries and error handling'
+    ],
+    images: [
+      { src: '/images/project/prompt/1.png', alt: 'image upload interface' }, // update screenshot
+    ],
+    featuresCompleted: 30,
+    linesOfCode: 8000,
+    teamSize: 1,
+    liveDemoUrl: 'https://image-to-prompt-ui.vercel.app/', // or live deployment if available
+    githubUrl: 'https://github.com/Ari-ICU/image-to-prompt-ui'
   }
+
 ];
